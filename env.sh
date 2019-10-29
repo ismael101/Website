@@ -1,3 +1,0 @@
-export PORT=5000
-export EMAIL=ismaelomermohamed@gmail.com
-export API_KEY=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

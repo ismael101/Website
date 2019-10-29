@@ -5,7 +5,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Ismael Farah',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -15,6 +15,12 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  server: {
+    port: 8000, // default: 3000
+  },
+  serverMiddleware:[
+    {path: '/api', handler: '~/api/server.js' }
+  ],
   /*
   ** Customize the progress-bar color
   */
@@ -40,7 +46,9 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
+    '@nuxtjs/axios'
   ],
+  
   /*
   ** Build configuration
   */
@@ -50,5 +58,5 @@ export default {
     */
     extend (config, ctx) {
     }
-  }
+  },
 }

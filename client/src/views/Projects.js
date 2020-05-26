@@ -4,7 +4,7 @@ import {Container, Tab, Tabs, Carousel, Image, Row, Col} from 'react-bootstrap'
 class Projects extends Component{
     render(){
         return(
-            <Container style={{height:"100vh"}}>
+            <Container>
                 <Tabs fill defaultActiveKey="blog" className='mt-5'>
                     <Tab eventKey="blog" title="Blog" className='py-5 px-5'>
                         <div>

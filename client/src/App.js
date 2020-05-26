@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch, BrowserRouter as Router} from 'react-router-dom'
 import logo from './logo.svg';
+import Footer from './components/Footer'
 import Header from './components/Header'
 import Index from './views/Index'
 import Projects from './views/Projects'
@@ -17,6 +18,7 @@ function App() {
                 <Route path='/projects' exact component={Projects}/>
                 <Route path='/contact' component={Contact}/>             
               </Switch>
+              <Footer/>
           </Router>
     </div>
   );

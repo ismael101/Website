@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const morgan =  require('morgan')
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer");
 const app = express()
 
 app.use(cors())
@@ -9,29 +9,34 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 app.use('/api/mail', (req,res,next) => {
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                   user: process.env.EMAIL,
-                   pass: process.env.PASS
-               }
-           });
-           
-        const mailOptions = {
-            from: req.body.from, // sender address
-            to: process.env.EMAIL,
-            subject: req.body.subject,
-            text:req.body.text
-            };    
-        
-        transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-                console.log(error);
-                res.status(400).send(error)
-            } else {
-                res.status(200).send('Email Sent')
-            }
-            });
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            type: 'OAuth2',
+            user: process.env.EMAIL,
+            clientId: process.env.CLIENT,
+            clientSecret: process.env.SECRET,
+            refreshToken: process.env.REFRESH,
+            accessToken: process.env.ACCESS
+        }
+       });
+    let mailOptions = {
+    from: req.body.email,
+    to: process.env.EMAIL,
+    subject: req.body.subject,
+    text: req.body.message
+    };
+
+    transporter.sendMail(mailOptions, function (err) {
+        if(err){
+            console.log(err);
+            res.status(400).send(err)
+        } else {
+            console.log('Email Sent');
+            res.status(200).send('Email Sent')
+        }
+    })
+    
 })
 
 // Error handlers - for not found, and app errors 

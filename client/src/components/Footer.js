@@ -1,12 +1,16 @@
 import React from 'react'
-import {Container, Jumbotron} from 'react-bootstrap'
+import {Container, Row, Col, Image} from 'react-bootstrap'
 
 export default function Header(){
     return(
-        <Jumbotron fluid='true' style={{bottom:"0px"}}>
+        <footer className='py-5'>
             <Container>
-                <h1>Footer</h1>
+                <h3 className='text-center'>Stay Connected</h3>
+                <div className='text-center'>
+                    <a href='https://github.com/ismael101'><Image className='my-5 mx-2' src={require('../images/github.png')} width={50}/></a>
+                    <a href='https://www.linkedin.com/in/ismael-mohamed-065b19139/'><Image className='my-5 mx-2' src={require('../images/linkedin.webp')} width={50}/></a>
+                </div>
             </Container>
-        </Jumbotron>
+        </footer>
     )
 }
